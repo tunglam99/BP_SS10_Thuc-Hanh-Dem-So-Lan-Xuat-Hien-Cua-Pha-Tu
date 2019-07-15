@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function count(arr, data) {
+        var count = 0;
+        var position = searchBinary(arr, data);
+        if (position > -1) {
+            ++count;
+            for (var i = position-1; i > 0; --i) {
+                if (arr[i] == data) {
+                    ++count;
+                }
+                else {
+                    break;
+                }
+            }
+
+            for (var i = position+1; i < arr.length; ++i) {
+                if (arr[i] == data) {
+                    ++count;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return count;
+    };
+   /* function searchBinary(arr, data) {
+        let lowerBound = 0;
+        let upperBound = arr.length - 1;
+        let midPoint = -1;
+        let index = -1;
+        while (lowerBound <= upperBound) {
+            midPoint = Math.round((lowerBound + upperBound) / 2);
+            if (arr[midPoint] === data) {
+                index = midPoint;
+                break;
+            } else {
+                if (arr[midPoint] < data) {
+                    lowerBound = midPoint + 1;
+                } else {
+                    upperBound = midPoint - 1;
+                }
+            }
+        }
+        return index;
+    }*/
+
+    function searchBinary(arr1, data1) {
+        return arr1.indexOf(data1);
+
+    }
+
+
+    function insertionsort(arr) {
+       arr.sort(function (a, b) {
+           return a-b
+       });
+    }
+
+
+    function dispArr(arr) {
+        for (let i = 0 ; i<arr.length; i++) {
+            document.write(arr[i]+" ");
+        }
+    }
+
+    let nums = [];
+    for(let i =0; i<100; ++i){
+        nums[i] = Math.floor(Math.random() * 101);
+    }
+
+    insertionsort(nums);
+    dispArr(nums);
+    document.write("<br>");
+
+    let value = parseInt(prompt("Nhap vao gia tri can tim: "));
+    let retVal = count(nums,value);
+
+
+    document.write("Gia tri " + value+ " duoc tim thay "+ retVal);
+
+</script>
+</body>
+</html>
